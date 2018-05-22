@@ -1,0 +1,91 @@
+
+
+  <div class="container"><!--  {{ loginForm.value | json }} --></div>
+<br><br>
+<form [formGroup]="loginForm" (ngSubmit)="loginUser(loginForm)">
+
+  <div class="container">
+  <div class="row">
+      <div class="col-xs-12 col-sm-6">
+          <mat-form-field>
+              <input matInput type="text" formControlName="Prenom" placeholder="Last Name">
+            </mat-form-field>
+      </div>
+      <div class="col-xs-12 col-sm-6">
+          <mat-form-field>
+              <input matInput type="text" formControlName="Nom" placeholder="First Name">
+          </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-6">
+            <mat-form-field>
+                <mat-select placeholder="civility"  formControlName="civilite">
+                  <mat-option value="option">Mr</mat-option>
+                  <mat-option value="option">Mlle</mat-option>
+                  <mat-option value="option">Mme</mat-option>
+                </mat-select>
+              </mat-form-field>
+        </div>
+        <div class="col-xs-12 col-sm-6">
+            <mat-form-field>
+                <input matInput [matDatepicker]="dp" placeholder="Different local">
+                <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+                <mat-datepicker #dp></mat-datepicker>
+              </mat-form-field>
+              <!--<button mat-button (click)="french()">
+                Dynamically switch to French</button>-->
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-6">
+            <div class="example-selected-value">Your level of study : </div>
+            <mat-radio-group class="example-radio-group"   formControlFavorite="favoriteSeason">
+                <mat-radio-button class="example-radio-button" *ngFor="let Slevel of Slevel" [value]="Slevel">
+                  {{Slevel}}
+                </mat-radio-button>
+              </mat-radio-group>
+
+
+
+        </div>
+        <div class="col-xs-12 col-sm-6">
+          <mat-checkbox formControlName="hideRequired">
+          Hide required marker
+          </mat-checkbox>
+          <br>
+          <mat-label>
+          <mat-icon>favorite</mat-icon>
+          <i class="material-icons">
+              visibility
+              </i>
+              <br>
+              <label>list Icon<br></label><br>
+              <strong>https://material.io/tools/icons/?icon=visibility&style=baseline</strong>
+          </mat-label>
+
+      </div>
+   </div>
+    <div class="row">
+    <div class="col-xs-12 col-sm-6">
+        <mat-form-field>
+            <input matInput type="text" formControlName="email" placeholder="login">
+          </mat-form-field>
+     </div>
+    <div class="col-xs-12 col-sm-6">
+        <mat-form-field>
+            <input matInput type="password" formControlName="password" placeholder="password">
+        </mat-form-field>
+    </div>
+
+  </div>
+
+
+ <div class="row">
+   <div class="col-xs-12 col-sm-6">
+  <button mat-raised-button [disabled]="loginForm.invalid" type="submit" color="primary">Login</button>
+
+   </div>
+ </div>
+</div>
+</form>
